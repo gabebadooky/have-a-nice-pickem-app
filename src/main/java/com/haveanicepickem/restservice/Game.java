@@ -4,8 +4,12 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "games")
 public class Game {
 
     @Id
@@ -20,7 +24,11 @@ public class Game {
     // homeTeam
     private LocalDateTime zuluDateTime;
     private String broadcast;
-    // location
+    
+    @OneToOne()
+    @JoinColumn(name = "location_id")
+    private Location location;
+
     private boolean finished;
 
 }
