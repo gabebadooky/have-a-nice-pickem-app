@@ -15,7 +15,7 @@ public class GameEntity {
     @Id
     private String id;
     private String league;
-    private Integer weeknum;
+    private short weeknum;
     private String espnCode;
     private String cbsCode;
     private String foxCode;
