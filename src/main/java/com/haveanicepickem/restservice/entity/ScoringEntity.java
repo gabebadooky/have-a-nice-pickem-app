@@ -1,8 +1,13 @@
 package com.haveanicepickem.restservice.entity;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,9 +18,19 @@ public class ScoringEntity {
 	// penalty      SMALLINT        NOT NULL,
 	// updated_at   TIMESTAMPTZ     NOT NULL DEFAULT CURRENT_TIMESTAMP
 
+    @Id
     private char confidence;
+
+    @Column(nullable = false)
     private byte reward;
+
+    @Column(nullable = false)
     private byte penalty;
-    private LocalDateTime updatedAt;
+
+    @Column(
+        columnDefinition = "timestamp with time zone default current_timestamp",
+        nullable = false
+    )
+    private OffsetDateTime updatedAt;
     
 }

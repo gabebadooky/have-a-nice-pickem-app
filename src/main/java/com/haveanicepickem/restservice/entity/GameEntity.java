@@ -1,6 +1,7 @@
 package com.haveanicepickem.restservice.entity;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -49,5 +50,11 @@ public class GameEntity {
 
     @Column(nullable = false)
     private boolean finished;
+
+    @Column(
+        columnDefinition = "timestamp with time zone default current_timestamp",
+        nullable = false
+    )
+    private OffsetDateTime updatedAt;
 
 }
