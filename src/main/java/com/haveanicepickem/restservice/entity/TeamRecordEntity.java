@@ -11,6 +11,15 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "team_records")
 public class TeamRecordEntity {
+    // team_id      VARCHAR(100)    NOT NULL,
+	// record_type  VARCHAR(10)     NOT NULL,
+	// wins         SMALLINT        NULL,
+	// losses       SMALLINT        NULL,
+	// ties         SMALLINT        NULL,
+	// updated_at   TIMESTAMPTZ     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	// 
+	// PRIMARY KEY (team_id, record_type),
+	// CONSTRAINT fk_team_record_team FOREIGN KEY (team_id) REFERENCES pickem.teams(id)
 
     @Id
     @ManyToOne

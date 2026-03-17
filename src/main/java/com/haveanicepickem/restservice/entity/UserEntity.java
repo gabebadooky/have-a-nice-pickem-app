@@ -13,6 +13,15 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class UserEntity {
+    // id               SERIAL          PRIMARY KEY,
+	// username         VARCHAR(75)     NOT NULL,
+	// display_name     VARCHAR(50)     NOT NULL,
+	// favorite_team    VARCHAR(100)    NOT NULL,
+	// notif_pref       CHAR(1)         NOT NULL,
+	// email_address    VARCHAR(75)     NOT NULL,
+	// phone            VARCHAR(10)     NOT NULL,
+	// created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	// updated_at       TIMESTAMPTZ     NOT NULL DEFAULT CURRENT_TIMESTAMP
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

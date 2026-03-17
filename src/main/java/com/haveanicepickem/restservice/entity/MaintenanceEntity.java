@@ -9,6 +9,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "maintenance")
 public class MaintenanceEntity {
+    // id           SERIAL          PRIMARY KEY,
+	// flag         BOOLEAN         NOT NULL,
+	// created_at   TIMESTAMP       NOT NULL
 
     @Id
     private String id;
