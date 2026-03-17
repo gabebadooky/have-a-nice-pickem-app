@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice;
+package com.haveanicepickem.restservice.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

@@ -1,7 +1,8 @@
-package com.haveanicepickem.restservice;
+package com.haveanicepickem.restservice.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -15,7 +16,14 @@ public class MaintenanceEntity {
 
     @Id
     private String id;
+
+    @Column(nullable = false)
     private boolean flag;
+
+    @Column(
+        columnDefinition = "timestamp with time zone default current_timestamp",
+        nullable = false
+    )
     private LocalDateTime createdAt;
 
 }

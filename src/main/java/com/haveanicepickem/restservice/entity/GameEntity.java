@@ -38,7 +38,7 @@ public class GameEntity {
     // awayTeam
     // homeTeam
     
-    @Column(name = "zule_game_time", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime zuluGameTime;
 
     @Column(name = "broadcast", nullable = false)
