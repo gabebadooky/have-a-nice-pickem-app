@@ -1,7 +1,10 @@
-package com.haveanicepickem.restservice;
+package com.haveanicepickem.restservice.entity;
 
 import java.time.OffsetDateTime;
 
+import org.hibernate.annotations.ColumnDefault;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -26,10 +29,20 @@ public class TeamRecordEntity {
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private TeamEntity team;
 
+    @Column(nullable = false)
     private String recordType;
+
+    @Column(nullable = true)
     private byte wins;
+
+    @Column(nullable = true)
     private byte losses;
+
+    @Column(nullable = true)
     private byte ties;
+
+    @Column(nullable = false)
+    @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
 }

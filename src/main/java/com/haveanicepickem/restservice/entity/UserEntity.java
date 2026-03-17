@@ -1,8 +1,11 @@
-package com.haveanicepickem.restservice;
+package com.haveanicepickem.restservice.entity;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
+import org.hibernate.annotations.ColumnDefault;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,13 +29,31 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    
+    @Column(nullable = false)
     private String username;
+    
+    @Column(nullable = false)
     private String displayName;
+    
+    @Column(nullable = false)
     private String favoriteTeam;
-    private char notifPref;
+    
+    @Column(name = "notifPref", nullable = false)
+    private char notificationPreference;
+    
+    @Column(nullable = false)
     private String emailAddress;
+    
+    @Column(nullable = false)
     private String phone;
+    
+    @Column(nullable = false)
+    @ColumnDefault("current_timestamp")
     private LocalDateTime createdAt;
+
+    @Column(nullable = false)
+    @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
 }
