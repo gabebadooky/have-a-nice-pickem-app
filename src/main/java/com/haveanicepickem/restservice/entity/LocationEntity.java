@@ -1,7 +1,8 @@
-package com.haveanicepickem.restservice;
+package com.haveanicepickem.restservice.entity;
 
 import java.time.OffsetDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,11 +20,26 @@ public class LocationEntity {
 
     @Id
     private String id;
+
+    @Column(nullable = false)
     private String stadium;
+
+    @Column(nullable = false)
     private String city;
+
+    @Column(nullable = false)
     private String state;
+
+    @Column(nullable = false)
     private float latitude;
+
+    @Column(nullable = false)
     private float longitude;
+
+    @Column(
+        columnDefinition = "timestamp with time zone default current_timestamp",
+        nullable = false
+    )
     private OffsetDateTime updatedAt;
 
 }
