@@ -1,7 +1,8 @@
-package com.haveanicepickem.restservice;
+package com.haveanicepickem.restservice.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -29,21 +30,56 @@ public class TeamEntity {
 
     @Id
     private String id;
+
+    @Column(nullable = false)
     private String league;
+
+    @Column(nullable = false)
     private String espnCode;
+
+    @Column(nullable = false)
     private String cbsCode;
+
+    @Column(nullable = false)
     private String foxCode;
+
+    @Column(nullable = true)
     private String vegasCode;
+
+    @Column(nullable = false)
     private String conferenceID;
+
+    @Column(nullable = false)
     private String divisionName;
+
+    @Column(nullable = false)
     private String teamName;
+
+    @Column(nullable = false)
     private String teamMascot;
+
+    @Column(nullable = false)
     private boolean powerConference;
+
+    @Column(nullable = false)
     private String teamLogoUrl;
+
+    @Column(nullable = false)
     private String teamDarkLogoUrl;
+
+    @Column(nullable = false)
     private String primaryColor;
+
+    @Column(nullable = false)
     private String alternateColor;
+
+    @Column(nullable = false)
     private byte ranking;
+
+    @Column(
+        columnDefinition = "timestamp with time zone default current_timestamp",
+        nullable = false
+    )
     private LocalDateTime updatedAt;
 
 }
