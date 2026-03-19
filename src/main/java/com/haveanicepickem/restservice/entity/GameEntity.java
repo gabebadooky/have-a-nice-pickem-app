@@ -2,7 +2,7 @@ package com.haveanicepickem.restservice.entity;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-
+import org.hibernate.annotations.ColumnDefault;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,6 +13,25 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "games")
 public class GameEntity {
+    // id                      VARCHAR(100)    PRIMARY KEY,
+	// league                  VARCHAR(25)     NOT NULL,
+	// weeknum                 SMALLINT        NOT NULL,
+	// season                  SMALLINT        NOT NULL,
+	// espn_code               VARCHAR(50)     NOT NULL,
+	// cbs_code                VARCHAR(50)     NOT NULL,
+	// fox_code                VARCHAR(50)     NOT NULL,
+	// vegas_code              VARCHAR(50)     NULL,
+	// away_team_id            VARCHAR(100)    NOT NULL,
+	// home_team_id            VARCHAR(100)    NOT NULL,
+	// zulu_game_time          TIMESTAMP       NOT NULL,
+	// broadcast               VARCHAR(25)     NOT NULL,
+	// location_id             VARCHAR(25)     NOT NULL,
+	// finished                BOOLEAN         NOT NULL,
+	// updated_at              TIMESTAMPTZ     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    //
+	// CONSTRAINT fk_games_away_team FOREIGN KEY (away_team_id) REFERENCES pickem.teams(id),
+	// CONSTRAINT fk_games_home_team FOREIGN KEY (home_team_id) REFERENCES pickem.teams(id),
+	// CONSTRAINT fk_games_location FOREIGN KEY (location_id) REFERENCES pickem.locations(id)
 
     @Id
     private String id;
@@ -23,25 +42,30 @@ public class GameEntity {
     @Column(nullable = false)
     private short weeknum;
 
-    @Column(name = "espn_code", nullable = false)
+    @Column(nullable = false)
     private String espnCode;
 
-    @Column(name = "cbs_code", nullable = false)
+    @Column(nullable = false)
     private String cbsCode;
 
-    @Column(name = "fox_code", nullable = false)
+    @Column(nullable = false)
     private String foxCode;
 
-    @Column(name = "vegas_code")
+    @Column(nullable = false)
     private String vegasCode;
 
-    // awayTeam
-    // homeTeam
+    @ManyToOne
+    @JoinColumn(name = "away_team_id", referencedColumnName = "id", nullable = false)
+    private TeamEntity awayTeam;
+
+    @ManyToOne
+    @JoinColumn(name = "home_team_id", referencedColumnName = "id", nullable = false)
+    private TeamEntity homeTeam;
     
     @Column(nullable = false)
     private LocalDateTime zuluGameTime;
 
-    @Column(name = "broadcast", nullable = false)
+    @Column(nullable = false)
     private String broadcast;
     
     @ManyToOne
@@ -51,10 +75,8 @@ public class GameEntity {
     @Column(nullable = false)
     private boolean finished;
 
-    @Column(
-        columnDefinition = "timestamp with time zone default current_timestamp",
-        nullable = false
-    )
+    @Column(nullable = false)
+    @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
 }

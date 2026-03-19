@@ -1,7 +1,7 @@
 package com.haveanicepickem.restservice.entity;
 
 import java.time.LocalDateTime;
-
+import org.hibernate.annotations.ColumnDefault;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,10 +20,8 @@ public class MaintenanceEntity {
     @Column(nullable = false)
     private boolean flag;
 
-    @Column(
-        columnDefinition = "timestamp with time zone default current_timestamp",
-        nullable = false
-    )
+    @Column(nullable = false)
+    @ColumnDefault("current_timestamp")
     private LocalDateTime createdAt;
 
 }

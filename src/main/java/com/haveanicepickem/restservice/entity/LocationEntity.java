@@ -1,7 +1,7 @@
 package com.haveanicepickem.restservice.entity;
 
 import java.time.OffsetDateTime;
-
+import org.hibernate.annotations.ColumnDefault;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -36,10 +36,8 @@ public class LocationEntity {
     @Column(nullable = false)
     private float longitude;
 
-    @Column(
-        columnDefinition = "timestamp with time zone default current_timestamp",
-        nullable = false
-    )
+    @Column(nullable = false)
+    @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
 }

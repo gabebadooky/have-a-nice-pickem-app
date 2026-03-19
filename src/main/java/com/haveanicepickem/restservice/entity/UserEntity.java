@@ -2,9 +2,7 @@ package com.haveanicepickem.restservice.entity;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-
 import org.hibernate.annotations.ColumnDefault;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
