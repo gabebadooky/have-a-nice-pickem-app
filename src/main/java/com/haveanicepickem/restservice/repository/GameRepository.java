@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.haveanicepickem.restservice.entity.GameEntity;
 
 @Repository
-public interface GamesRepository extends JpaRepository<GameEntity, String> {
+public interface GameRepository extends JpaRepository<GameEntity, String> {
 
     // WHERE league = ? AND season = ? AND weeknum = ? ORDER BY zulu_game_time
     List<GameEntity> findByLeagueAndSeasonAndWeeknumOrderByZuluGameTime(String league, short season, short weeknum);
