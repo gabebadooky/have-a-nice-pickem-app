@@ -14,10 +14,10 @@ public interface GameRepository extends JpaRepository<GameEntity, String> {
     List<GameEntity> findByLeagueAndSeasonAndWeeknumOrderByZuluGameTime(String league, short season, short weeknum);
 
     // WHERE season = ? AND weeknum = ? ORDER BY zulu_game_time
-    List<GameEntity> findBySeasonAndWeeknumOrderByZuluGameTime(String league, short season, short weeknum);
+    List<GameEntity> findBySeasonAndWeeknumOrderByZuluGameTime(short season, short weeknum);
 
     // WHERE season = ? ORDER BY zulu_game_time
-    List<GameEntity> findBySeasonOrderByZuluGameTime(String league, short season, short weeknum);
+    List<GameEntity> findBySeasonOrderByZuluGameTime(short season);
 
     // WHERE away_team_id = ? OR home_team_id = ? ORDER BY weeknum
     List<GameEntity> findByAwayTeamOrHomeTeamOrderByWeeknum(String awayTeamID, String homeTeamID);
