@@ -3,14 +3,14 @@ package com.haveanicepickem.restservice.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class UserTeamNotesId implements Serializable {
+public class PickId implements Serializable {
 
     private Long userID;
-    private String teamID;
+    private String gameID;
 
-    public UserTeamNotesId(Long userID, String teamID) {
+    public PickId(Long userID, String gameID) {
         this.userID = userID;
-        this.teamID = teamID;
+        this.gameID = gameID;
     }
 
     @Override
@@ -23,21 +23,21 @@ public class UserTeamNotesId implements Serializable {
             return false;
         }
 
-        // Cast `o` to UserTeamNotesId if we can confirm
-        // `o` is not null, of a different class, or 
+        // Cast `o` to PickId if we can confirm `o` 
+        // is not null, of a different class, or 
         // the same exact object
-        UserTeamNotesId that = (UserTeamNotesId) o;
+        PickId that = (PickId) o;
 
         boolean eq = (Objects.equals(userID, that.userID) &&
-                        Objects.equals(teamID, that.teamID));
-
+                        Objects.equals(gameID, that.gameID));
+                        
         return eq;
-        
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userID, teamID);
+        return Objects.hash(userID, gameID);
     }
 
 }

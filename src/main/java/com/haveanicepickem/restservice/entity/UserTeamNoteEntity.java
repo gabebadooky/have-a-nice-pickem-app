@@ -11,9 +11,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@IdClass(UserTeamNotesId.class)
+@IdClass(UserTeamNoteId.class)
 @Table(name = "user_team_notes")
-public class UserTeamNotesEntity {
+public class UserTeamNoteEntity {
     // user_id      INTEGER         NOT NULL,
 	// team_id      VARCHAR(100)    NOT NULL,
 	// notes        BYTEA           NULL,
