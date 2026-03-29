@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -43,6 +44,9 @@ public class GameEntity {
     private short weeknum;
 
     @Column(nullable = false)
+    private short season;
+
+    @Column(nullable = false)
     private String espnCode;
 
     @Column(nullable = false)
@@ -71,6 +75,10 @@ public class GameEntity {
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
     private LocationEntity location;
+
+    @OneToOne
+    @JoinColumn(name = "forecast_id", referencedColumnName = "game_id", nullable = true)
+    private GameForecastEntity forecast;
 
     @Column(nullable = false)
     private boolean finished;
