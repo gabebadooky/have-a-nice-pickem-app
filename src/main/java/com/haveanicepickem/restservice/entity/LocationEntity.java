@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "locations")
+@Table(name = "locations", schema = "pickem")
 public class LocationEntity {
     // id           VARCHAR(25)     PRIMARY KEY,
 	// stadium      VARCHAR(100)    NOT NULL,

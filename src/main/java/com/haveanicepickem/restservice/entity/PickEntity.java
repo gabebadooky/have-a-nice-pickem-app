@@ -8,11 +8,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "picks")
+@Table(name = "picks", schema = "pickem")
 public class PickEntity {
     // user_id                 INTEGER         NOT NULL,
 	// game_id                 VARCHAR(100)    NOT NULL,

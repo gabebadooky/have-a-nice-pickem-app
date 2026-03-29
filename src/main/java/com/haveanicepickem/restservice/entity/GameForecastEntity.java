@@ -8,13 +8,12 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @IdClass(GameForecastId.class)
-@Table(name = "game_forecasts")
+@Table(name = "game_forecasts", schema = "pickem")
 public class GameForecastEntity {
     // game_id                 VARCHAR(100)    NOT NULL,
 	// location_id             VARCHAR(25)		NOT NULL,

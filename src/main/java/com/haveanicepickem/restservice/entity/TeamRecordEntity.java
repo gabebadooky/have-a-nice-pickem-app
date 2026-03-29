@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @IdClass(TeamRecordId.class)
-@Table(name = "team_records")
+@Table(name = "team_records", schema = "pickem")
 public class TeamRecordEntity {
     // team_id      VARCHAR(100)    NOT NULL,
 	// record_type  VARCHAR(10)     NOT NULL,

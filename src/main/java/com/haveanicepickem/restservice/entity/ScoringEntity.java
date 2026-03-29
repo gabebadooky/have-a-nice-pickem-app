@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "scoring")
+@Table(name = "scoring", schema = "pickem")
 public class ScoringEntity {
     // confidence   CHAR(1)         PRIMARY KEY,
 	// reward       SMALLINT        NOT NULL,

@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @IdClass(BettingOddsId.class)
-@Table(name = "betting_odds")
+@Table(name = "betting_odds", schema = "pickem")
 public class BettingOddsEntity {
     // game_id                 VARCHAR(100)    NOT NULL,
 	// team_id                 VARCHAR(100)    NOT NULL,

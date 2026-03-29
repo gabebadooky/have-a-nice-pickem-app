@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "pickem")
 public class UserEntity {
     // id               SERIAL          PRIMARY KEY,
 	// username         VARCHAR(75)     NOT NULL,

@@ -13,7 +13,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "games")
+@Table(name = "games", schema = "pickem")
 public class GameEntity {
     // id                      VARCHAR(100)    PRIMARY KEY,
 	// league                  VARCHAR(25)     NOT NULL,

@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @IdClass(PredictionId.class)
-@Table(name = "predictions")
+@Table(name = "predictions", schema = "pickem")
 public class PredictionEntity {
     // user_id                 INTEGER         NOT NULL,
 	// prediction_code         VARCHAR(25)     NOT NULL,

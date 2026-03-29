@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @IdClass(UserTeamNoteId.class)
-@Table(name = "user_team_notes")
+@Table(name = "user_team_notes", schema = "pickem")
 public class UserTeamNoteEntity {
     // user_id      INTEGER         NOT NULL,
 	// team_id      VARCHAR(100)    NOT NULL,
