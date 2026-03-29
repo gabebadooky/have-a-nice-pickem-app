@@ -47,4 +47,21 @@ public class TeamRecordEntity {
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
+
+    public String getRecordType() {
+        return this.recordType;
+    }
+
+    public byte getWins() {
+        return this.wins;
+    }
+
+    public byte getLosses() {
+        return this.losses;
+    }
+
+    public byte getTies() {
+        return this.ties;
+    }
+
 }
