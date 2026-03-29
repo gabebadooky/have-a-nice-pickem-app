@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+
 @Entity
 @IdClass(BettingOddsId.class)
 @Table(name = "betting_odds", schema = "pickem")
@@ -57,5 +58,26 @@ public class BettingOddsEntity {
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
+
+
+    public String getSource() {
+        return this.source;
+    }
+
+    public Float getOverUnder() {
+        return this.overUnder;
+    }
+
+    public byte getMoneyline() {
+        return this.moneyline;
+    }
+
+    public Float getSpread() {
+        return this.spread;
+    }
+
+    public Float getWinProbability() {
+        return this.winProbability;
+    }
 
 }
