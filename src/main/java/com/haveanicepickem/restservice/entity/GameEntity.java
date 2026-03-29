@@ -42,7 +42,7 @@ public class GameEntity {
     private String league;
 
     @Column(nullable = false)
-    private short weeknum;
+    private byte weeknum;
 
     @Column(nullable = false)
     private short season;
@@ -82,10 +82,51 @@ public class GameEntity {
     private GameForecastEntity forecast;
 
     @Column(nullable = false)
-    private boolean finished;
+    private boolean gameFinished;
 
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
+
+
+    public String getLeauge() {
+        return this.league;
+    }
+
+    public byte getWeekNum() {
+        return this.weeknum;
+    }
+
+    public short getSeason() {
+        return this.season;
+    }
+
+    public TeamEntity getAwayTeam() {
+        return this.awayTeam;
+    }
+
+    public TeamEntity getHomeTeam() {
+        return this.homeTeam;
+    }
+
+    public LocalDateTime getZuluGameTime() {
+        return this.zuluGameTime;
+    }
+
+    public String getBroadcast() {
+        return this.broadcast;
+    }
+
+    public LocationEntity getLocation() {
+        return this.location;
+    }
+
+    public GameForecastEntity getForecast() {
+        return this.forecast;
+    }
+
+    public boolean getGameFinished() {
+        return this.gameFinished;
+    }
 
 }
