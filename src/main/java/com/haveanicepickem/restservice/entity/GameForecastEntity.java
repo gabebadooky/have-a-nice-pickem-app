@@ -50,13 +50,42 @@ public class GameForecastEntity {
     private float windSpeed;
 
     @Column(nullable = true)
-    private float shortDescription;
+    private String shortDescription;
 
     @Column(nullable = true)
-    private float longDescription;
+    private String longDescription;
 
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
+
+
+    public float getTemperature() {
+        return this.temperature;
+    }
+
+    public float getFeelsLike() {
+        return this.feelsLike;
+    }
+
+    public float getHumidity() {
+        return this.humidity;
+    }
+
+    public float getVisibility() {
+        return this.visibility;
+    }
+
+    public float getWindSpeed() {
+        return this.windSpeed;
+    }
+
+    public String getShortDescription() {
+        return this.shortDescription;
+    }
+
+    public String getLongDescription() {
+        return this.longDescription;
+    }
 
 }
