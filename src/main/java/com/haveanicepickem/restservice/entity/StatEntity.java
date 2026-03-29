@@ -45,4 +45,13 @@ public class StatEntity {
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
+
+    public String getStatType() {
+        return this.statType;
+    }
+
+    public float getStatValue() {
+        return this.statValue;
+    }
+
 }
