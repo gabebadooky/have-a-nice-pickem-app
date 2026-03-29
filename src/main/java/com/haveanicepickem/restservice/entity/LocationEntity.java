@@ -40,4 +40,25 @@ public class LocationEntity {
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
+
+    public String getStadium() {
+        return this.stadium;
+    }
+
+    public String getCity() {
+        return this.city;
+    }
+
+    public String getState() {
+        return this.state;
+    }
+
+    public float getLatitude() {
+        return this.latitude;
+    }
+
+    public float getLongitude() {
+        return this.longitude;
+    }
+
 }
