@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
@@ -23,7 +24,7 @@ public class PredictionEntity {
 	// CONSTRAINT fk_predictions_user FOREIGN KEY (user_id) REFERENCES pickem.users(id)
 
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 

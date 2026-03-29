@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
@@ -24,12 +25,12 @@ public class UserTeamNoteEntity {
 	// CONSTRAINT fk_user_team_notes_team FOREIGN KEY (team_id) REFERENCES pickem.teams(id)
     
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private TeamEntity team;
 

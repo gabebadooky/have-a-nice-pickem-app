@@ -5,6 +5,7 @@ import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -58,11 +59,11 @@ public class GameEntity {
     @Column(nullable = false)
     private String vegasCode;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "away_team_id", referencedColumnName = "id", nullable = false)
     private TeamEntity awayTeam;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "home_team_id", referencedColumnName = "id", nullable = false)
     private TeamEntity homeTeam;
     
@@ -72,11 +73,11 @@ public class GameEntity {
     @Column(nullable = false)
     private String broadcast;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
     private LocationEntity location;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "forecast_id", referencedColumnName = "game_id", nullable = true)
     private GameForecastEntity forecast;
 

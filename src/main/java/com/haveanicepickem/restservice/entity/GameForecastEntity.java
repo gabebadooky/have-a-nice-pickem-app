@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
@@ -30,14 +31,9 @@ public class GameForecastEntity {
 	// CONSTRAINT fk_forecasts_location FOREIGN KEY (location_id) REFERENCES pickem.locations(id)
 
     @Id
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private GameEntity game;
-
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
-    private LocationEntity location;
 
     @Column(nullable = true)
     private float temperature;

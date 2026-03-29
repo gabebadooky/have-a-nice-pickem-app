@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
@@ -29,12 +30,12 @@ public class BoxScoresEntity {
 	// CONSTRAINT fk_box_scores_team FOREIGN KEY (team_id) REFERENCES pickem.teams(id)
 
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private GameEntity game;
 
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private TeamEntity team;
 
