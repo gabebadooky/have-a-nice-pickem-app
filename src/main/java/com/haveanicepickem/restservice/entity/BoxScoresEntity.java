@@ -61,4 +61,29 @@ public class BoxScoresEntity {
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
+
+    public short getQ1score() {
+        return this.q1score;
+    }
+
+    public short getQ2score() {
+        return this.q2score;
+    }
+
+    public short getQ3score() {
+        return this.q3score;
+    }
+
+    public short getQ4score() {
+        return this.q4score;
+    }
+
+    public short getOvertime() {
+        return this.overtime;
+    }
+
+    public short getTotal() {
+        return this.total;
+    }
+
 }
