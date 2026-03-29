@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.haveanicepickem.restservice.dto.EventsResponse;
+import com.haveanicepickem.restservice.dto.MatchupsResponse;
 import com.haveanicepickem.restservice.entity.GameEntity;
 import com.haveanicepickem.restservice.repository.GameRepository;
 
