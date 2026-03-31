@@ -2,7 +2,7 @@ package com.haveanicepickem.restservice.dto;
 
 import java.util.List;
 
-public record CompetitorDTO(
+public record CompetitorResponseDTO(
     List<BettingOddResponseDTO> bettingOdds,
     BoxScoreResponseDTO boxscore,
     List<StatsResponseDTO> gameStats,
