@@ -80,4 +80,49 @@ public class TeamEntity {
     @ColumnDefault("current_timestamp")
     private LocalDateTime updatedAt;
 
+
+    public String getLeague() {
+        return this.league;
+    }
+
+    public String getConferenceID() {
+        return this.conferenceID;
+    }
+
+    public String getDivisionName() {
+        return this.divisionName;
+    }
+
+    public String getTeamName() {
+        return this.teamName;
+    }
+
+    public String getTeamMascot() {
+        return this.teamMascot;
+    }
+
+    public boolean getPowerConference() {
+        return this.powerConference;
+    }
+
+    public String getTeamLogoURL() {
+        return this.teamLogoUrl;
+    }
+
+    public String getTeamDarkLogoURL() {
+        return this.teamDarkLogoUrl;
+    }
+
+    public String getPrimaryColor() {
+        return this.primaryColor;
+    }
+
+    public String getAlternateColor() {
+        return this.alternateColor;
+    }
+
+    public byte getRanking() {
+        return this.ranking;
+    }
+
 }

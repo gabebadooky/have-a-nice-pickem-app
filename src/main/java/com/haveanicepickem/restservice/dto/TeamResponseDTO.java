@@ -4,10 +4,6 @@ import java.util.List;
 
 public record TeamResponseDTO(
     String league,
-    String espnCode,
-    String cbsCode,
-    String foxCode,
-    String vegasCode,
     String conferenceID,
     String divisionName,
     TeamRecordResponseDTO conferenceRecord,
