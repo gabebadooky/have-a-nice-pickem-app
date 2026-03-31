@@ -12,8 +12,6 @@ public class TeamMapper {
         String divisionName = team.getDivisionName();
         String teamName = team.getTeamName();
         String teamMascot = team.getTeamMascot();
-        TeamRecordResponseDTO conferenceRecord = new TeamRecordMapper().toDTO(team.getConferenceRecord());
-        TeamRecordResponseDTO overallRecord = new TeamRecordMapper().toDTO(team.getOverallRecord());
         boolean powerConference = team.getPowerConference();
         String teamLogoURL = team.getTeamLogoURL();
         String primaryColor = team.getPrimaryColor();
@@ -24,8 +22,6 @@ public class TeamMapper {
             league,
             conferenceID,
             divisionName,
-            conferenceRecord,
-            overallRecord,
             teamName,
             teamMascot, 
             powerConference,
