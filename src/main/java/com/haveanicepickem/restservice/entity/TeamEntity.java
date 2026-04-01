@@ -81,6 +81,10 @@ public class TeamEntity {
     private LocalDateTime updatedAt;
 
 
+    public String getTeamID() {
+        return this.id;
+    }
+
     public String getLeague() {
         return this.league;
     }

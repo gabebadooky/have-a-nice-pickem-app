@@ -89,6 +89,10 @@ public class GameEntity {
     private OffsetDateTime updatedAt;
 
 
+    public String getGameID() {
+        return this.id;
+    }
+    
     public String getLeauge() {
         return this.league;
     }
