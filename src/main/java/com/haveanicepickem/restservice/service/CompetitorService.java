@@ -21,14 +21,14 @@ public class CompetitorService {
     private BettingOddsRepository bettingOddsRepository;
     private BoxScoresRepository boxScoresRepository;
     private BoxScoresId boxScoresID;
+    private StatRepository statRepository;
 
     public CompetitorResponseDTO getCompetitor(String gameID, String teamID) {
         int boxscoreIdentifier = new BoxScoresId(gameID, teamID).hashCode();
 
         Optional<List<BettingOddsEntity>> bettingOdds = bettingOddsRepository.findByGameIdAndTeamId(gameID, teamID);
         Optional<BoxScoresEntity> boxscore = boxScoresRepository.findById(boxScoresID);
-
-
+        Optional<List<StatEntity>> stats = statRepository.findByGameIdAndTeamId(gameID, teamID);
     }
 
 }
