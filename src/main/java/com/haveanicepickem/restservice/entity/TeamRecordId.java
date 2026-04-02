@@ -3,12 +3,14 @@ package com.haveanicepickem.restservice.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.haveanicepickem.constants.RecordType;
+
 public class TeamRecordId implements Serializable {
 
     private String teamId;
-    private String recordType;
+    private RecordType recordType;
 
-    public TeamRecordId(String teamId, String recordType) {
+    public TeamRecordId(String teamId, RecordType recordType) {
         this.teamId = teamId;
         this.recordType = recordType;
     }

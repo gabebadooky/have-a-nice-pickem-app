@@ -2,6 +2,9 @@ package com.haveanicepickem.restservice.entity;
 
 import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
+
+import com.haveanicepickem.constants.RecordType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,7 +35,7 @@ public class TeamRecordEntity {
 
     @Id
     @Column(nullable = false)
-    private String recordType;
+    private RecordType recordType;
 
     @Column(nullable = true)
     private byte wins;
@@ -48,7 +51,7 @@ public class TeamRecordEntity {
     private OffsetDateTime updatedAt;
 
 
-    public String getRecordType() {
+    public RecordType getRecordType() {
         return this.recordType;
     }
 
