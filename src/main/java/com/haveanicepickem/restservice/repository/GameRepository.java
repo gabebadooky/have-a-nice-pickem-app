@@ -1,6 +1,7 @@
 package com.haveanicepickem.restservice.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -11,15 +12,15 @@ import com.haveanicepickem.restservice.entity.GameEntity;
 public interface GameRepository extends JpaRepository<GameEntity, String> {
 
     // WHERE league = ? AND season = ? AND weeknum = ? ORDER BY zulu_game_time
-    List<GameEntity> findByLeagueAndSeasonAndWeeknumOrderByZuluGameTime(String league, short season, short weeknum);
+    Optional<List<GameEntity>> findAllByLeagueAndSeasonAndWeeknumOrderByZuluGameTime(String league, short season, short weeknum);
 
     // WHERE season = ? AND weeknum = ? ORDER BY zulu_game_time
-    List<GameEntity> findBySeasonAndWeeknumOrderByZuluGameTime(short season, short weeknum);
+    Optional<List<GameEntity>> findAllBySeasonAndWeeknumOrderByZuluGameTime(short season, short weeknum);
 
     // WHERE season = ? ORDER BY zulu_game_time
-    List<GameEntity> findBySeasonOrderByZuluGameTime(short season);
+    Optional<List<GameEntity>> findAllBySeasonOrderByZuluGameTime(short season);
 
     // WHERE away_team_id = ? OR home_team_id = ? ORDER BY weeknum
-    List<GameEntity> findByAwayTeamOrHomeTeamOrderByWeeknum(String awayTeamID, String homeTeamID);
+    Optional<List<GameEntity>> findAllByAwayTeamOrHomeTeamOrderByWeeknum(String awayTeamID, String homeTeamID);
 
 }
