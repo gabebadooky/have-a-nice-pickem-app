@@ -27,8 +27,6 @@ import com.haveanicepickem.restservice.repository.TeamRepository;
 @Service
 public class CompetitorService {
 
-    private BettingOddsRepository bettingOddsRepository;
-    private BettingOddsMapper bettingOddsMapper;
     private BoxScoresRepository boxScoresRepository;
     private StatRepository statRepository;
     private TeamRepository teamRepository;
@@ -40,7 +38,7 @@ public class CompetitorService {
         TeamRecordId conferenceRecordIdentifier = new TeamRecordId(teamID, RecordType.CONFERENCE);
         TeamRecordId overallRecordIdentifier = new TeamRecordId(teamID, RecordType.OVERALL);
 
-        Optional<List<BettingOddsEntity>> bettingOdds = bettingOddsRepository.findByGameIdAndTeamId(gameID, teamID);
+        
         Optional<BoxScoresEntity> boxscore = boxScoresRepository.findById(boxscoreIdentifier);
         Optional<List<StatEntity>> gameStats = statRepository.findByGameIdAndTeamId(gameID, teamID);
         Optional<List<StatEntity>> teamStats = statRepository.findByTeamId(teamID);
@@ -50,7 +48,7 @@ public class CompetitorService {
         List<GameEntity> schedule = gameRepository.findByAwayTeamOrHomeTeamOrderByWeeknum(teamID, teamID);
 
         return CompetitorResponseDTO(
-            bettingOddsMapper.toDTO(bettingOdds);
+            
             boxscore,
             gameStats,
             teamStats,

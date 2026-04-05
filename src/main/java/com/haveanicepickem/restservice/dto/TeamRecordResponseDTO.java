@@ -1,8 +1,9 @@
 package com.haveanicepickem.restservice.dto;
 
+import com.haveanicepickem.constants.RecordType;
 
 public record TeamRecordResponseDTO(
-    String recordType,
+    RecordType recordType,
     short wins,
     short losses,
     short time
