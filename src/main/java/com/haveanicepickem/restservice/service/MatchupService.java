@@ -16,4 +16,8 @@ public class MatchupService {
     private CompetitorResponseDTO awayCompetitor;
     private CompetitorResponseDTO homeCompetitor;
 
+    public MatchupService(String gameID) {
+        this.game = new GameService(gameID).getGame();
+    }
+
 }
