@@ -18,6 +18,8 @@ public class MatchupService {
 
     public MatchupService(String gameID) {
         this.game = new GameService(gameID).getGame();
+        this.location = new LocationService(gameID).getLocation();
+        this.forecast = new GameForecastService(gameID).getForecast();
     }
 
 }
