@@ -16,16 +16,15 @@ public class BettingOddsService {
     private BettingOddsRepository bettingOddsRepository;
 
     public List<BettingOddResponseDTO> getBettingOdds(String gameID, String teamID) {
-        Optional<List<BettingOddsEntity>> bettingOddsOptionalList = bettingOddsRepository.findByGameIdAndTeamId(gameID, teamID);
-        
-        List<BettingOddResponseDTO> mappedBettingOdds = new ArrayList<>();
+        Optional<List<BettingOddsEntity>> optionalBettingOddsList = bettingOddsRepository.findByGameIdAndTeamId(gameID, teamID);
+        List<BettingOddResponseDTO> mappedBettingOddsList = new ArrayList<>();
 
-        for (BettingOddsEntity bettingOdds : bettingOddsOptionalList.orElse(Collections.emptyList())) {
-            BettingOddResponseDTO bettingOddResponse = bettingOddsMapper.toDTO(bettingOdds);
-            mappedBettingOdds.addLast(bettingOddResponse);
+        for (BettingOddsEntity bettingOdds : optionalBettingOddsList.orElse(Collections.emptyList())) {
+            BettingOddResponseDTO mappedBettingOdds = bettingOddsMapper.toDTO(bettingOdds);
+            mappedBettingOddsList.addLast(mappedBettingOdds);
         };
 
-        return mappedBettingOdds;
+        return mappedBettingOddsList;
     }
 
 }
