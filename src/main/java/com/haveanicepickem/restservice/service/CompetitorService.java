@@ -10,6 +10,8 @@ import com.haveanicepickem.constants.RecordType;
 import com.haveanicepickem.restservice.dto.BettingOddResponseDTO;
 import com.haveanicepickem.restservice.dto.BoxScoreResponseDTO;
 import com.haveanicepickem.restservice.dto.CompetitorResponseDTO;
+import com.haveanicepickem.restservice.dto.StatsResponseDTO;
+import com.haveanicepickem.restservice.dto.TeamResponseDTO;
 import com.haveanicepickem.restservice.entity.GameEntity;
 import com.haveanicepickem.restservice.entity.StatEntity;
 import com.haveanicepickem.restservice.entity.TeamEntity;
@@ -23,24 +25,24 @@ import com.haveanicepickem.restservice.repository.TeamRepository;
 @Service
 public class CompetitorService {
 
-    private BettingOddsService bettingOddsService;
-    private BoxScoreService boxScoreService;
-
-    private StatRepository statRepository;
+    private StatsService statService;
+    
     private TeamRepository teamRepository;
     private TeamRecordRepository teamRecordRepository;
     private GameRepository gameRepository;
 
     public CompetitorResponseDTO getCompetitor(String gameID, String teamID) {
-        List<BettingOddResponseDTO> bettingOdds = bettingOddsService.getBettingOdds(gameID, teamID);
-        BoxScoreResponseDTO boxscore = boxScoreService.getBoxscores(gameID, teamID);
+        List<BettingOddResponseDTO> bettingOdds = new BettingOddsService(gameID, teamID).getBettingOdds();
+        BoxScoreResponseDTO boxscore = new BoxScoreService(gameID, teamID).getBoxscores();
+        List<StatsResponseDTO> gameStats = new GameStatsServiceImpl(gameID, teamID).getStats();
+        List<StatsResponseDTO> seasonStats = new SeasonStatsServiceImpl(teamID).getStats();
+        TeamResponseDTO team = new TeamService(teamID).getTeam();
 
         
         TeamRecordId conferenceRecordIdentifier = new TeamRecordId(teamID, RecordType.CONFERENCE);
         TeamRecordId overallRecordIdentifier = new TeamRecordId(teamID, RecordType.OVERALL);
 
-        Optional<List<StatEntity>> gameStats = statRepository.findByGameIdAndTeamId(gameID, teamID);
-        Optional<List<StatEntity>> teamStats = statRepository.findByTeamId(teamID);
+        
         Optional<TeamEntity> team = teamRepository.findById(teamID);
         Optional<TeamRecordEntity> conferenceRecord = teamRecordRepository.findById(conferenceRecordIdentifier);
         Optional<TeamRecordEntity> overallRecord = teamRecordRepository.findById(overallRecordIdentifier);
@@ -50,10 +52,10 @@ public class CompetitorService {
         return CompetitorResponseDTO(
             bettingOdds,
             boxscore,
-
-
             gameStats,
-            teamStats,
+            seasonStats
+
+
             team,
             conferenceRecord,
             overallRecord,
