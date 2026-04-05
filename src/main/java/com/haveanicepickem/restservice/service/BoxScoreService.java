@@ -1,26 +1,30 @@
 package com.haveanicepickem.restservice.service;
 
-import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 import com.haveanicepickem.restservice.dto.BoxScoreMapper;
 import com.haveanicepickem.restservice.dto.BoxScoreResponseDTO;
-import com.haveanicepickem.restservice.entity.BoxScoresEntity;
 import com.haveanicepickem.restservice.entity.BoxScoresId;
 import com.haveanicepickem.restservice.repository.BoxScoresRepository;
 
+@Service
 public class BoxScoreService {
 
     private BoxScoresRepository boxScoresRepository;
     private BoxScoreMapper boxScoreMapper;
+    private String gameID;
+    private String teamID;
 
-    public BoxScoreResponseDTO getBoxscores(String gameID, String teamID) {
+    public BoxScoreService(String gameID, String teamID) {
+        this.gameID = gameID;
+        this.teamID = teamID;
+    }
+
+    public BoxScoreResponseDTO getBoxscores() {
         BoxScoresId boxscoreIdentifier = new BoxScoresId(gameID, teamID);
-        
-        Optional<BoxScoresEntity> optionalBoxscore = boxScoresRepository.findById(boxscoreIdentifier);
-
-        BoxScoreResponseDTO mappedBoxscore = boxScoreMapper.toDTO(optionalBoxscore.orElse(null));
-        
-        return mappedBoxscore;
+        return boxScoresRepository.findById(boxscoreIdentifier)
+                                    .map(boxScoreMapper::toDTO)
+                                    .orElse(null);
     }
 
 }

@@ -1,30 +1,33 @@
 package com.haveanicepickem.restservice.service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 import com.haveanicepickem.restservice.dto.BettingOddResponseDTO;
 import com.haveanicepickem.restservice.dto.BettingOddsMapper;
-import com.haveanicepickem.restservice.entity.BettingOddsEntity;
 import com.haveanicepickem.restservice.repository.BettingOddsRepository;
 
+@Service
 public class BettingOddsService {
 
     private BettingOddsMapper bettingOddsMapper;
     private BettingOddsRepository bettingOddsRepository;
+    private String gameID;
+    private String teamID;
 
-    public List<BettingOddResponseDTO> getBettingOdds(String gameID, String teamID) {
-        Optional<List<BettingOddsEntity>> optionalBettingOddsList = bettingOddsRepository.findByGameIdAndTeamId(gameID, teamID);
-        List<BettingOddResponseDTO> mappedBettingOddsList = new ArrayList<>();
+    public BettingOddsService(String gameID, String teamID) {
+        this.gameID = gameID;
+        this.teamID = teamID;
+    }
 
-        for (BettingOddsEntity bettingOdds : optionalBettingOddsList.orElse(Collections.emptyList())) {
-            BettingOddResponseDTO mappedBettingOdds = bettingOddsMapper.toDTO(bettingOdds);
-            mappedBettingOddsList.addLast(mappedBettingOdds);
-        };
-
-        return mappedBettingOddsList;
+    public List<BettingOddResponseDTO> getBettingOdds() {
+        return bettingOddsRepository.findByGameIdAndTeamId(gameID, teamID)
+                                    .orElse(Collections.emptyList())
+                                    .stream()
+                                    .map(bettingOddsMapper::toDTO)
+                                    .toList();
     }
 
 }
