@@ -3,8 +3,8 @@ package com.haveanicepickem.note;
 import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
 
-import com.haveanicepickem.restservice.entity.UserEntity;
 import com.haveanicepickem.team.TeamEntity;
+import com.haveanicepickem.user.UserEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

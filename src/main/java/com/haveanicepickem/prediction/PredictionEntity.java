@@ -1,7 +1,10 @@
-package com.haveanicepickem.restservice.entity;
+package com.haveanicepickem.prediction;
 
 import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
+
+import com.haveanicepickem.user.UserEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,5 +43,14 @@ public class PredictionEntity {
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
+
+
+    public String getPredictionDescription() {
+        return this.predictionDescription;
+    }
+
+    public String getPredictionSelection() {
+        return this.predictionSelection;
+    }
 
 }

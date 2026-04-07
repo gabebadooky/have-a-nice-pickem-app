@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice.entity;
+package com.haveanicepickem.user;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -53,5 +53,30 @@ public class UserEntity {
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
+
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getDisplayName() {
+        return this.displayName;
+    }
+
+    public String getFavoriteTeam() {
+        return this.favoriteTeam;
+    }
+
+    public char getNotificationPreference() {
+        return this.notificationPreference;
+    }
+
+    public String getEmailAddress() {
+        return this.emailAddress;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
 
 }

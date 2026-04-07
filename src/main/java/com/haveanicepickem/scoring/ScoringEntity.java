@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice.entity;
+package com.haveanicepickem.scoring;
 
 import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;

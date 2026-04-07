@@ -4,7 +4,9 @@ import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
 
 import com.haveanicepickem.game.GameEntity;
+import com.haveanicepickem.scoring.ScoringEntity;
 import com.haveanicepickem.team.TeamEntity;
+import com.haveanicepickem.user.UserEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,9 +1,7 @@
-package com.haveanicepickem.restservice.repository;
+package com.haveanicepickem.scoring;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.haveanicepickem.restservice.entity.ScoringEntity;
 
 @Repository
 public interface ScoringRepository extends JpaRepository<ScoringEntity, String> {}

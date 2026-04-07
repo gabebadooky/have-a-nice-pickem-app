@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice.entity;
+package com.haveanicepickem.prediction;
 
 import java.io.Serializable;
 import java.util.Objects;

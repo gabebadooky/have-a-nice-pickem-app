@@ -19,7 +19,7 @@ public class BettingOddsService {
     }
 
     public List<BettingOddsDTO> getBettingOdds() {
-        return bettingOddsRepository.findByGameIdAndTeamId(gameID, teamID)
+        return bettingOddsRepository.findAllByGameIdAndTeamId(gameID, teamID)
                                     .orElse(Collections.emptyList())
                                     .stream()
                                     .map(bettingOddsMapper::toDTO)

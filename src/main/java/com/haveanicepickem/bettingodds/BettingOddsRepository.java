@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BettingOddsRepository extends JpaRepository<BettingOddsEntity, BettingOddsId> {
 
-    Optional<List<BettingOddsEntity>> findByGameIdAndTeamId(String gameID, String teamID);
+    Optional<List<BettingOddsEntity>> findAllByGameIdAndTeamId(String gameID, String teamID);
 
 }
