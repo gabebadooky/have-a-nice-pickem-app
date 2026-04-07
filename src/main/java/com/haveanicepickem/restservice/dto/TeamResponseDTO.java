@@ -1,8 +1,8 @@
 package com.haveanicepickem.restservice.dto;
 
-import java.util.List;
 
 public record TeamResponseDTO(
+    String id,
     String league,
     String conferenceID,
     String divisionName,

@@ -36,7 +36,7 @@ public class CompetitorService {
         this.schedule = new ScheduleService(teamID).getSchedule();
     }
 
-    public CompetitorResponseDTO getCompetitor(String gameID, String teamID) {
+    public CompetitorResponseDTO getCompetitor() {
         CompetitorResponseDTO competitor = new CompetitorResponseDTO(
             bettingOdds,
             boxscore,
