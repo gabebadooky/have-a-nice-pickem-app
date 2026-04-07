@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice.entity;
+package com.haveanicepickem.maintenance;
 
 import java.time.LocalDateTime;
 import org.hibernate.annotations.ColumnDefault;
@@ -26,5 +26,10 @@ public class MaintenanceEntity {
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private LocalDateTime createdAt;
+
+
+    public boolean getFlag() {
+        return this.flag;
+    }
 
 }

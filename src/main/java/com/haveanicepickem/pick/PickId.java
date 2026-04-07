@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice.entity;
+package com.haveanicepickem.pick;
 
 import java.io.Serializable;
 import java.util.Objects;

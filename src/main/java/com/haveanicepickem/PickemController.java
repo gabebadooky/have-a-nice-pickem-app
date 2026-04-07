@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice;
+package com.haveanicepickem;
 
 import java.util.Map;
 

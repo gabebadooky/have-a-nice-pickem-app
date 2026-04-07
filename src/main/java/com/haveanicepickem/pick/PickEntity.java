@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice.entity;
+package com.haveanicepickem.pick;
 
 import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
@@ -52,5 +52,14 @@ public class PickEntity {
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
+
+
+    public String getTeam() {
+        return this.team.getTeamID();
+    }
+
+    public ScoringEntity getConfidence() {
+        return this.confidence;
+    }
 
 }

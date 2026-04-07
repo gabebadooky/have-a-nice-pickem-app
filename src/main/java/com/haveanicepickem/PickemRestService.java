@@ -1,4 +1,4 @@
-package com.haveanicepickem.restservice;
+package com.haveanicepickem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
