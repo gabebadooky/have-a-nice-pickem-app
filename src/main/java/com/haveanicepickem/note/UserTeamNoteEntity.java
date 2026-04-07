@@ -44,5 +44,10 @@ public class UserTeamNoteEntity {
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
+
+
+    public byte[] getNotes() {
+        return this.notes;
+    }
     
 }
