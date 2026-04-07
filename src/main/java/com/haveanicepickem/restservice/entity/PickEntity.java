@@ -2,6 +2,10 @@ package com.haveanicepickem.restservice.entity;
 
 import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
+
+import com.haveanicepickem.game.GameEntity;
+import com.haveanicepickem.team.TeamEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
