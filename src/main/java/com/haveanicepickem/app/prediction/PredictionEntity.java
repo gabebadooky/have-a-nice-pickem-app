@@ -28,8 +28,8 @@ public class PredictionEntity {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserEntity user;
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private UserEntity userID;
 
     @Id
     private String predictionCode;

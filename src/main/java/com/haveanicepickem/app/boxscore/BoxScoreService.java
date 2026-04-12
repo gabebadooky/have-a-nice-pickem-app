@@ -5,17 +5,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoxScoreService {
 
-    private BoxScoresRepository boxScoresRepository;
-    private BoxScoreMapper boxScoreMapper;
-    private String gameID;
-    private String teamID;
+    private final BoxScoresRepository boxScoresRepository;
+    private final BoxScoreMapper boxScoreMapper;
 
-    public BoxScoreService(String gameID, String teamID) {
-        this.gameID = gameID;
-        this.teamID = teamID;
+    public BoxScoreService(BoxScoresRepository boxScoresRepository, BoxScoreMapper boxScoreMapper) {
+        this.boxScoresRepository = boxScoresRepository;
+        this.boxScoreMapper = boxScoreMapper;
     }
 
-    public BoxScoreDTO getBoxscores() {
+    public BoxScoreDTO getBoxscores(String gameID, String teamID) {
         BoxScoresId boxscoreIdentifier = new BoxScoresId(gameID, teamID);
         return boxScoresRepository.findById(boxscoreIdentifier)
                                     .map(boxScoreMapper::toDTO)

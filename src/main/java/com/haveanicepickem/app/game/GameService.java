@@ -5,15 +5,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class GameService {
 
-    private GameRepository gameRepository;
-    private GameMapper gameMapper;
-    private String gameID;
+    private final GameRepository gameRepository;
+    private final GameMapper gameMapper;
 
-    public GameService(String gameID) {
-        this.gameID = gameID;
+    public GameService(GameRepository gameRepository, GameMapper gameMapper) {
+        this.gameRepository = gameRepository;
+        this.gameMapper = gameMapper;
     }
 
-    public GameDTO getGame() {
+    public GameDTO getGame(String gameID) {
+        if (gameID == null) {
+            gameID = "";
+        }
+        
         return gameRepository.findById(gameID)
                                 .map(gameMapper::toDTO)
                                 .orElse(null);

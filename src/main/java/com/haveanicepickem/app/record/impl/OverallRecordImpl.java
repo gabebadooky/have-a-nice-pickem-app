@@ -1,26 +1,28 @@
 package com.haveanicepickem.app.record.impl;
 
-import com.haveanicepickem.app.constants.RecordType;
+import org.springframework.stereotype.Service;
+
 import com.haveanicepickem.app.record.TeamRecordDTO;
 import com.haveanicepickem.app.record.TeamRecordId;
 import com.haveanicepickem.app.record.TeamRecordMapper;
 import com.haveanicepickem.app.record.TeamRecordRepository;
 import com.haveanicepickem.app.record.TeamRecordService;
+import com.haveanicepickem.app.shared.constants.RecordType;
 
+@Service
 public class OverallRecordImpl implements TeamRecordService {
 
     private TeamRecordRepository teamRecordRepository;
     private TeamRecordMapper teamRecordMapper;
-    private String teamID;
-    private RecordType recordType;
 
-    public OverallRecordImpl(String teamID, RecordType recordType) {
-        this.teamID = teamID;
-        this.recordType = recordType;
+    public OverallRecordImpl(TeamRecordRepository teamRecordRepository, TeamRecordMapper teamRecordMapper) {
+        this.teamRecordRepository = teamRecordRepository;
+        this.teamRecordMapper = teamRecordMapper;
     }
 
-    public TeamRecordDTO getRecord() {
-        TeamRecordId overallRecordIdentifier = new TeamRecordId(teamID, recordType);
+    public TeamRecordDTO getRecord(String teamID, RecordType recordType) {
+        String recordTypeString = recordType.text();
+        TeamRecordId overallRecordIdentifier = new TeamRecordId(teamID, recordTypeString);
         return teamRecordRepository.findById(overallRecordIdentifier)
                                     .map(teamRecordMapper::toDTO)
                                     .orElse(null);

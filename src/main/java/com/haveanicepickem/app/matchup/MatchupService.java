@@ -20,14 +20,25 @@ import com.haveanicepickem.app.location.LocationService;
 @Service
 public class MatchupService {
 
-    private GameDTO game;
-    private LocationDTO location;
-    private ForecastDTO forecast;
-    private CompetitorDTO awayCompetitor;
-    private CompetitorDTO homeCompetitor;
-    private GameRepository gameRepository;
+    private final GameRepository gameRepository;
+    private final GameService gameService;
+    private final LocationService locationService;
+    private final ForecastService forecastService;
+    private final CompetitorService competitorService;
 
-    public MatchupService() {}
+    public MatchupService(
+        GameRepository gameRepository,
+        GameService gameService,
+        LocationService locationService,
+        ForecastService forecastService,
+        CompetitorService competitorService
+    ) {
+        this.gameRepository = gameRepository;
+        this.gameService = gameService;
+        this.locationService = locationService;
+        this.forecastService = forecastService;
+        this.competitorService = competitorService;
+    }
 
     private List<String> getGameIDs() {
         List<String> gameIDs = new ArrayList<>();
@@ -43,11 +54,11 @@ public class MatchupService {
     }
 
     private MatchupDTO getMatchup(String gameID) {
-        this.game = new GameService(gameID).getGame();
-        this.location = new LocationService(gameID).getLocation();
-        this.forecast = new ForecastService(gameID).getForecast();
-        this.awayCompetitor = new CompetitorService(gameID, game.awayTeam().id()).getCompetitor();
-        this.homeCompetitor = new CompetitorService(gameID, game.homeTeam().id()).getCompetitor();
+        GameDTO game = gameService.getGame(gameID);
+        LocationDTO location = locationService.getLocation(gameID);
+        ForecastDTO forecast = forecastService.getForecast(gameID);
+        CompetitorDTO awayCompetitor = competitorService.getCompetitor(gameID, game.awayTeam().id());
+        CompetitorDTO homeCompetitor = competitorService.getCompetitor(gameID, game.homeTeam().id());
 
         return new MatchupDTO(
             game,

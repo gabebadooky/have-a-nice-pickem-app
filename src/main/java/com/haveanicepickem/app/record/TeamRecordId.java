@@ -3,15 +3,17 @@ package com.haveanicepickem.app.record;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.haveanicepickem.app.constants.RecordType;
 
 public class TeamRecordId implements Serializable {
 
-    private String teamId;
-    private RecordType recordType;
+    private String teamID;
+    private String recordType;
 
-    public TeamRecordId(String teamId, RecordType recordType) {
-        this.teamId = teamId;
+    public TeamRecordId() {
+    }
+
+    public TeamRecordId(String teamID, String recordType) {
+        this.teamID = teamID;
         this.recordType = recordType;
     }
 
@@ -30,7 +32,7 @@ public class TeamRecordId implements Serializable {
         // the same exact object
         TeamRecordId that = (TeamRecordId) o;
 
-        boolean eq = (Objects.equals(teamId, that.teamId) &&
+        boolean eq = (Objects.equals(teamID, that.teamID) &&
                                 Objects.equals(recordType, that.recordType));
         return eq;
 
@@ -38,7 +40,7 @@ public class TeamRecordId implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(teamId, recordType);
+        return Objects.hash(teamID, recordType);
     }
 
 }

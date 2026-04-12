@@ -5,15 +5,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class TeamService {
 
-    private TeamRepository teamRepository;
-    private TeamMapper teamMapper;
-    private String teamID;
+    private final TeamRepository teamRepository;
+    private final TeamMapper teamMapper;
 
-    public TeamService(String teamID) {
-        this.teamID = teamID;
+    public TeamService(TeamRepository teamRepository, TeamMapper teamMapper) {
+        this.teamRepository = teamRepository;
+        this.teamMapper = teamMapper;
     }
 
-    public TeamDTO getTeam() {
+    public TeamDTO getTeam(String teamID) {
         return teamRepository.findById(teamID)
                                 .map(teamMapper::toDTO)
                                 .orElse(null);

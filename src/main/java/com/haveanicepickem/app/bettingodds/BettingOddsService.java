@@ -8,18 +8,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class BettingOddsService {
 
-    private BettingOddsMapper bettingOddsMapper;
-    private BettingOddsRepository bettingOddsRepository;
-    private String gameID;
-    private String teamID;
+    private final BettingOddsMapper bettingOddsMapper;
+    private final BettingOddsRepository bettingOddsRepository;
 
-    public BettingOddsService(String gameID, String teamID) {
-        this.gameID = gameID;
-        this.teamID = teamID;
+    public BettingOddsService(BettingOddsRepository bettingOddsRepository, BettingOddsMapper bettingOddsMapper) {
+        this.bettingOddsRepository = bettingOddsRepository;
+        this.bettingOddsMapper = bettingOddsMapper;
     }
 
-    public List<BettingOddsDTO> getBettingOdds() {
-        return bettingOddsRepository.findAllByGameIdAndTeamId(gameID, teamID)
+    public List<BettingOddsDTO> getBettingOdds(String gameID, String teamID) {
+        return bettingOddsRepository.findAllByGameID_IdAndTeamID_Id(gameID, teamID)
                                     .orElse(Collections.emptyList())
                                     .stream()
                                     .map(bettingOddsMapper::toDTO)

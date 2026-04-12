@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PickRepository extends JpaRepository<PickEntity, PickId> {
 
-    Optional<List<PickEntity>> findAllByUserID(Long userID);
+    Optional<List<PickEntity>> findAllByUserID_Id(Long userID);
 
 }

@@ -3,7 +3,6 @@ package com.haveanicepickem.app.record;
 import java.time.OffsetDateTime;
 import org.hibernate.annotations.ColumnDefault;
 
-import com.haveanicepickem.app.constants.RecordType;
 import com.haveanicepickem.app.team.TeamEntity;
 
 import jakarta.persistence.Column;
@@ -31,40 +30,40 @@ public class TeamRecordEntity {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private TeamEntity team;
+    @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)
+    private TeamEntity teamID;
 
     @Id
     @Column(nullable = false)
-    private RecordType recordType;
+    private String recordType;
 
     @Column(nullable = true)
-    private byte wins;
+    private short wins;
 
     @Column(nullable = true)
-    private byte losses;
+    private short losses;
 
     @Column(nullable = true)
-    private byte ties;
+    private short ties;
 
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
     private OffsetDateTime updatedAt;
 
 
-    public RecordType getRecordType() {
+    public String getRecordType() {
         return this.recordType;
     }
 
-    public byte getWins() {
+    public short getWins() {
         return this.wins;
     }
 
-    public byte getLosses() {
+    public short getLosses() {
         return this.losses;
     }
 
-    public byte getTies() {
+    public short getTies() {
         return this.ties;
     }
 

@@ -1,4 +1,4 @@
-package com.haveanicepickem.app.constants;
+package com.haveanicepickem.app.shared.constants;
 
 public class HaveANicePickemConstants {
 

@@ -5,15 +5,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class LocationService {
 
-    private LocationRepository locationRepository;
-    private LocationMapper locationMapper;
-    private String locationID;
+    private final LocationRepository locationRepository;
+    private final LocationMapper locationMapper;
 
-    public LocationService(String locationID) {
-        this.locationID = locationID;
+    public LocationService(LocationRepository locationRepository, LocationMapper locationMapper) {
+        this.locationRepository = locationRepository;
+        this.locationMapper = locationMapper;
     }
 
-    public LocationDTO getLocation() {
+    public LocationDTO getLocation(String locationID) {
         return locationRepository.findById(locationID)
                                     .map(locationMapper::toDTO)
                                     .orElse(null);

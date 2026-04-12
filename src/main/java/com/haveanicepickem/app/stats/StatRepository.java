@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StatRepository extends JpaRepository<StatEntity, StatId> {
 
-    public Optional<List<StatEntity>> findByGameIdAndTeamId(String gameID, String teamID);
+    public Optional<List<StatEntity>> findByGameID_IdAndTeamID_Id(String gameID, String teamID);
 
-    public Optional<List<StatEntity>> findByTeamId(String teamID);
+    public Optional<List<StatEntity>> findByTeamID_Id(String teamID);
 
 }

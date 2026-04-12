@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PredictionRepository extends JpaRepository<PredictionEntity, PredictionId> {
 
-    Optional<List<PredictionEntity>> findAllByUserID(Long userID);
+    Optional<List<PredictionEntity>> findAllByUserID_Id(Long userID);
 
     Optional<List<PredictionEntity>> findAllByPredictionCode(String predictionCode);
 

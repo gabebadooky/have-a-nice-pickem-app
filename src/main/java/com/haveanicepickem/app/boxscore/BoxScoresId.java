@@ -8,6 +8,9 @@ public class BoxScoresId implements Serializable {
     private String gameID;
     private String teamID;
 
+    public BoxScoresId() {
+    }
+
     public BoxScoresId(String gameID, String teamID) {
         this.gameID = gameID;
         this.teamID = teamID;
@@ -23,16 +26,10 @@ public class BoxScoresId implements Serializable {
             return false;
         }
 
-        // Cast `o` to BoxScoresId if we can confirm
-        // `o` is not null, of a different class, or 
-        // the same exact object
         BoxScoresId that = (BoxScoresId) o;
 
-        boolean eq = (Objects.equals(gameID, that.gameID) &&
-                        Objects.equals(teamID, that.teamID));
-        
-        return eq;
-        
+        return Objects.equals(gameID, that.gameID)
+                && Objects.equals(teamID, that.teamID);
     }
 
     @Override

@@ -8,6 +8,9 @@ public class PickId implements Serializable {
     private Long userID;
     private String gameID;
 
+    public PickId() {
+    }
+
     public PickId(Long userID, String gameID) {
         this.userID = userID;
         this.gameID = gameID;

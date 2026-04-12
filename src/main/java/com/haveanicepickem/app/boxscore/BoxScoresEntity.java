@@ -35,31 +35,31 @@ public class BoxScoresEntity {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "game_id", referencedColumnName = "id")
-    private GameEntity game;
+    @JoinColumn(name = "game_id", referencedColumnName = "id", nullable = false)
+    private GameEntity gameID;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private TeamEntity team;
+    @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)
+    private TeamEntity teamID;
 
     @Column(nullable = true)
-    private byte q1score;
+    private short q1score;
 
     @Column(nullable = true)
-    private byte q2score;
+    private short q2score;
 
     @Column(nullable = true)
-    private byte q3score;
+    private short q3score;
 
     @Column(nullable = true)
-    private byte q4score;
+    private short q4score;
 
     @Column(nullable = true)
-    private byte overtime;
+    private short overtime;
 
     @Column(nullable = true)
-    private byte total;
+    private short total;
 
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")

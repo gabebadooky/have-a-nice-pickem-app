@@ -30,7 +30,7 @@ public class PickService {
     }
 
     public List<PickDTO> getPicksByUserID() {
-        return pickRepository.findAllByUserID(userID)
+        return pickRepository.findAllByUserID_Id(userID)
                                 .orElse(Collections.emptyList())
                                 .stream()
                                 .map(pickMapper::toDTO)

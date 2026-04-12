@@ -1,5 +1,8 @@
 package com.haveanicepickem.app.boxscore;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class BoxScoreMapper {
     public BoxScoreDTO toDTO(BoxScoresEntity boxscores) {
         short q1score = boxscores.getQ1score();

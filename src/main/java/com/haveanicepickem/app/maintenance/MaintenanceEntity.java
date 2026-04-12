@@ -7,10 +7,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "maintenance")
+@Table(name = "maintenance", schema = "pickem")
 public class MaintenanceEntity {
     // id           SERIAL          PRIMARY KEY,
 	// flag         BOOLEAN         NOT NULL,
@@ -18,6 +19,7 @@ public class MaintenanceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(allocationSize = 1, name = "maintenance_seq", sequenceName = "maintenance_seq")
     private Long id;
 
     @Column(nullable = false)

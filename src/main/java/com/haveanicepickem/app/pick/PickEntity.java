@@ -12,11 +12,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
+@IdClass(PickId.class)
 @Table(name = "picks", schema = "pickem")
 public class PickEntity {
     // user_id                 INTEGER         NOT NULL,
@@ -33,17 +35,17 @@ public class PickEntity {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserEntity user;
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private UserEntity userID;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "game_id", referencedColumnName = "id")
-    private GameEntity game;
+    @JoinColumn(name = "game_id", referencedColumnName = "id", nullable = false)
+    private GameEntity gameID;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_picked", referencedColumnName = "id")
-    private TeamEntity team;
+    private TeamEntity teamID;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "confidence", referencedColumnName = "confidence")
@@ -54,8 +56,8 @@ public class PickEntity {
     private OffsetDateTime updatedAt;
 
 
-    public String getTeam() {
-        return this.team.getTeamID();
+    public String getTeamPickedId() {
+        return this.teamID == null ? null : this.teamID.getTeamID();
     }
 
     public ScoringEntity getConfidence() {

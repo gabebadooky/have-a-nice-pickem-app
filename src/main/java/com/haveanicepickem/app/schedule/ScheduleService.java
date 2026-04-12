@@ -12,15 +12,15 @@ import com.haveanicepickem.app.game.GameDTO;
 @Service
 public class ScheduleService {
 
-    private GameRepository gameRepository;
-    private GameMapper gameMapper;
-    private String teamID;
+    private final GameRepository gameRepository;
+    private final GameMapper gameMapper;
 
-    public ScheduleService(String teamID) {
-        this.teamID = teamID;
+    public ScheduleService(GameRepository gameRepository, GameMapper gameMapper) {
+        this.gameRepository = gameRepository;
+        this.gameMapper = gameMapper;
     }
 
-    public List<GameDTO> getSchedule() {
+    public List<GameDTO> getSchedule(String teamID) {
         return gameRepository.findAllByAwayTeamOrHomeTeamOrderByWeeknum(teamID, teamID)
                                 .orElse(Collections.emptyList())
                                 .stream()

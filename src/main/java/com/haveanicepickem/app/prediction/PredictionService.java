@@ -8,42 +8,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class PredictionService {
 
-    private PredictionRepository predictionRepository;
-    private PredictionMapper predictionMapper;
-    private Long userID;
-    private String predictionCode;
+    private final PredictionRepository predictionRepository;
+    private final PredictionMapper predictionMapper;
 
-    public PredictionService(Long userID, String predictionCode) {
-        this.userID = userID;
-        this.predictionCode = predictionCode;
+    public PredictionService(PredictionRepository predictionRepository, PredictionMapper predictionMapper) {
+        this.predictionRepository = predictionRepository;
+        this.predictionMapper = predictionMapper;
     }
 
-    public PredictionService(Long userID) {
-        this.userID = userID;
-    }
-
-    public PredictionService(String predictionCode) {
-        this.predictionCode = predictionCode;
-    }
-
-    public PredictionDTO getPrediction() {
+    public PredictionDTO getPrediction(Long userID, String predictionCode) {
         PredictionId predictionIdentifier = new PredictionId(userID, predictionCode);
         return predictionRepository.findById(predictionIdentifier)
                                     .map(predictionMapper::toDTO)
                                     .orElse(null);
     }
 
-    public List<PredictionDTO> getAllUserPredictions() {
-        return predictionRepository.findAllByUserID(userID)
+    public List<PredictionDTO> getAllUserPredictions(Long userID) {
+        return predictionRepository.findAllByUserID_Id(userID)
                                     .orElse(Collections.emptyList())
                                     .stream()
                                     .map(predictionMapper::toDTO)
                                     .toList();
     }
 
-
-
-    public List<PredictionDTO> getAllPredictionsByCode() {
+    public List<PredictionDTO> getAllPredictionsByCode(String predictionCode) {
         return predictionRepository.findAllByPredictionCode(predictionCode)
                                     .orElse(Collections.emptyList())
                                     .stream()

@@ -13,18 +13,16 @@ import com.haveanicepickem.app.stats.StatsService;
 @Service
 public class GameStatsServiceImpl implements StatsService {
 
-    private StatRepository statRepository;
-    private StatMapper statMapper;
-    private String gameID;
-    private String teamID;
+    private final StatRepository statRepository;
+    private final StatMapper statMapper;
 
-    public GameStatsServiceImpl(String gameID, String teamID) {
-        this.gameID = gameID;
-        this.teamID = teamID;
+    public GameStatsServiceImpl(StatRepository statRepository, StatMapper statMapper) {
+        this.statRepository = statRepository;
+        this.statMapper = statMapper;
     }
     
-    public List<StatDTO> getStats() {
-        return statRepository.findByGameIdAndTeamId(gameID, teamID)
+    public List<StatDTO> getStats(String gameID, String teamID) {
+        return statRepository.findByGameID_IdAndTeamID_Id(gameID, teamID)
                                 .orElse(Collections.emptyList())
                                 .stream()
                                 .map(statMapper::toDTO)

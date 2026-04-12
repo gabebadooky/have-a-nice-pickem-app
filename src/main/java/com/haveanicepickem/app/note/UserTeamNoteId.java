@@ -8,6 +8,9 @@ public class UserTeamNoteId implements Serializable {
     private Long userID;
     private String teamID;
 
+    public UserTeamNoteId() {
+    }
+
     public UserTeamNoteId(Long userID, String teamID) {
         this.userID = userID;
         this.teamID = teamID;

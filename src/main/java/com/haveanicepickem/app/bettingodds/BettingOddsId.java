@@ -9,6 +9,9 @@ public class BettingOddsId implements Serializable {
     private String teamID;
     private String source;
 
+    public BettingOddsId() {
+    }
+
     public BettingOddsId(String gameID, String teamID, String source) {
         this.gameID = gameID;
         this.teamID = teamID;
@@ -25,17 +28,11 @@ public class BettingOddsId implements Serializable {
             return false;
         }
 
-        // Cast `o` to BettingOddsId if we can confirm
-        // `o` is not null, of a different class, or 
-        // the same exact object
         BettingOddsId that = (BettingOddsId) o;
 
-        boolean eq = (Objects.equals(gameID, that.gameID) && 
-                        Objects.equals(teamID, that.teamID) &&
-                        Objects.equals(source, that.source));
-
-        return eq;
-
+        return Objects.equals(gameID, that.gameID)
+                && Objects.equals(teamID, that.teamID)
+                && Objects.equals(source, that.source);
     }
 
     @Override

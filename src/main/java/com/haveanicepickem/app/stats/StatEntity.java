@@ -31,13 +31,13 @@ public class StatEntity {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "game_id", referencedColumnName = "id")
-    private GameEntity game;
+    @JoinColumn(name = "game_id", referencedColumnName = "id", nullable = false)
+    private GameEntity gameID;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private TeamEntity team;
+    @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)
+    private TeamEntity teamID;
 
     @Id
     private String statType;

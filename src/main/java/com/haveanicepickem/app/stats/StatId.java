@@ -9,12 +9,16 @@ public class StatId implements Serializable {
     private String teamID;
     private String statType;
 
+    public StatId() {
+    }
+
     public StatId(String gameID, String teamID, String statType) {
         this.gameID = gameID;
         this.teamID = teamID;
         this.statType = statType;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -24,20 +28,15 @@ public class StatId implements Serializable {
             return false;
         }
 
-        // Cast `o` to StatId if we can confirm`o` 
-        // is not null, of a different class, or 
-        // the same exact object
         StatId that = (StatId) o;
 
-        boolean eq = (Objects.equals(gameID, that.gameID) &&
-                        Objects.equals(teamID, that.teamID) &&
-                        Objects.equals(statType, that.statType));
-        
-        return eq;
-
+        return Objects.equals(gameID, that.gameID)
+                && Objects.equals(teamID, that.teamID)
+                && Objects.equals(statType, that.statType);
     }
 
-    public int hashCode () {
+    @Override
+    public int hashCode() {
         return Objects.hash(gameID, teamID, statType);
     }
 

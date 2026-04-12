@@ -8,6 +8,9 @@ public class PredictionId implements Serializable {
     private Long userID;
     private String predictionCode;
 
+    public PredictionId() {
+    }
+
     public PredictionId(Long userID, String predictionCode) {
         this.userID = userID;
         this.predictionCode = predictionCode;

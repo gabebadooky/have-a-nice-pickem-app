@@ -9,7 +9,7 @@ public class PickMapper {
 
     public PickDTO toDTO(PickEntity pick) {
 
-        String teamID = pick.getTeam();
+        String teamID = pick.getTeamPickedId();
         ScoringEntity confidence = pick.getConfidence();
 
         return new PickDTO(

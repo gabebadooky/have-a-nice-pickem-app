@@ -30,13 +30,13 @@ public class UserTeamNoteEntity {
     
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserEntity user;
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private UserEntity userID;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private TeamEntity team;
+    @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)
+    private TeamEntity teamID;
 
     @Column(columnDefinition = "bytea", nullable = true)
     private byte[] notes;
