@@ -2,11 +2,13 @@ package com.haveanicepickem.app.schedule;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.haveanicepickem.app.game.GameMapper;
 import com.haveanicepickem.app.game.GameRepository;
+import com.haveanicepickem.app.team.TeamEntity;
 import com.haveanicepickem.app.game.GameDTO;
 
 @Service
@@ -20,12 +22,13 @@ public class ScheduleService {
         this.gameMapper = gameMapper;
     }
 
-    public List<GameDTO> getSchedule(String teamID) {
-        return gameRepository.findAllByAwayTeamOrHomeTeamOrderByWeeknum(teamID, teamID)
-                                .orElse(Collections.emptyList())
-                                .stream()
-                                .map(gameMapper::toDTO)
-                                .toList();
+    public List<GameDTO> getSchedule(Optional<TeamEntity> team) {
+        TeamEntity presentTeam = team.orElseThrow();
+        return gameRepository.findAllByAwayTeamOrHomeTeamOrderByWeeknum(presentTeam, presentTeam)
+                            .orElse(Collections.emptyList())
+                            .stream()
+                            .map(gameMapper::toDTO)
+                            .toList();
     }
 
 }

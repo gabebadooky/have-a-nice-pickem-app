@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.haveanicepickem.app.team.TeamEntity;
 
 @Repository
 public interface GameRepository extends JpaRepository<GameEntity, String> {
@@ -19,6 +22,8 @@ public interface GameRepository extends JpaRepository<GameEntity, String> {
     Optional<List<GameEntity>> findAllBySeasonOrderByZuluGameTime(short season);
 
     // WHERE away_team_id = ? OR home_team_id = ? ORDER BY weeknum
-    Optional<List<GameEntity>> findAllByAwayTeamOrHomeTeamOrderByWeeknum(String awayTeamID, String homeTeamID);
+    //Optional<List<GameEntity>> findAllByAwayTeamOrHomeTeamOrderByWeeknum(TeamEntity awayTeam, TeamEntity homeTeam);
+    @Query("SELECT g FROM GameEntity g WHERE g.awayTeam = :awayTeam OR g.homeTeam = :homeTeam ORDER BY g.weeknum")
+    Optional<List<GameEntity>> findAllByAwayTeamOrHomeTeamOrderByWeeknum(TeamEntity awayTeam, TeamEntity homeTeam);
 
 }

@@ -13,6 +13,7 @@ public class TeamService {
         this.teamMapper = teamMapper;
     }
 
+    @SuppressWarnings("null")
     public TeamDTO getTeam(String teamID) {
         return teamRepository.findById(teamID)
                                 .map(teamMapper::toDTO)

@@ -18,6 +18,7 @@ import com.haveanicepickem.app.stats.StatDTO;
 import com.haveanicepickem.app.stats.impl.GameStatsServiceImpl;
 import com.haveanicepickem.app.stats.impl.SeasonStatsServiceImpl;
 import com.haveanicepickem.app.team.TeamDTO;
+import com.haveanicepickem.app.team.TeamRepository;
 import com.haveanicepickem.app.team.TeamService;
 
 @Service
@@ -31,6 +32,7 @@ public class CompetitorService {
     private final ConferenceRecordImpl conferenceRecordImpl;
     private final OverallRecordImpl overallRecordImpl;
     private final ScheduleService scheduleService;
+    private final TeamRepository teamRepository;
 
     public CompetitorService(
         BettingOddsService bettingOddsService,
@@ -40,7 +42,8 @@ public class CompetitorService {
         TeamService teamService,
         ConferenceRecordImpl conferenceRecordImpl,
         OverallRecordImpl overallRecordImpl,
-        ScheduleService scheduleService
+        ScheduleService scheduleService,
+        TeamRepository teamRepository
     ) {
         this.bettingOddsService = bettingOddsService;
         this.boxScoreService = boxScoreService;
@@ -50,6 +53,7 @@ public class CompetitorService {
         this.conferenceRecordImpl = conferenceRecordImpl;
         this.overallRecordImpl = overallRecordImpl;
         this.scheduleService = scheduleService;
+        this.teamRepository = teamRepository;
     }
 
     public CompetitorDTO getCompetitor(String gameID, String teamID) {
@@ -60,7 +64,7 @@ public class CompetitorService {
         TeamDTO team = teamService.getTeam(teamID);
         TeamRecordDTO conferenceRecord = conferenceRecordImpl.getRecord(teamID, RecordType.CONFERENCE);
         TeamRecordDTO overallRecord = overallRecordImpl.getRecord(teamID, RecordType.OVERALL);
-        List<GameDTO> schedule = scheduleService.getSchedule(teamID);
+        List<GameDTO> schedule = scheduleService.getSchedule(teamRepository.findById(teamID));
 
         CompetitorDTO competitor = new CompetitorDTO(
             bettingOdds,
