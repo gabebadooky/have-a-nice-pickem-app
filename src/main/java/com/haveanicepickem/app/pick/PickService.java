@@ -10,26 +10,21 @@ public class PickService {
 
     private PickRepository pickRepository;
     private PickMapper pickMapper;
-    private Long userID;
-    private String teamID;
 
-    public PickService(Long userID, String teamID) {
-        this.userID = userID;
-        this.teamID = teamID;
+    public PickService(PickRepository pickRepository, PickMapper pickMapper) {
+        this.pickRepository = pickRepository;
+        this.pickMapper = pickMapper;
     }
 
-    public PickService(Long userID) {
-        this.userID = userID;
-    }
 
-    public PickDTO getPick() {
+    public PickDTO getPick(Long userID, String teamID) {
         PickId pickIdentifier = new PickId(userID, teamID);
         return pickRepository.findById(pickIdentifier)
                                 .map(pickMapper::toDTO)
                                 .orElse(null);
     }
 
-    public List<PickDTO> getPicksByUserID() {
+    public List<PickDTO> getPicksByUserID(Long userID) {
         return pickRepository.findAllByUserID_Id(userID)
                                 .orElse(Collections.emptyList())
                                 .stream()
