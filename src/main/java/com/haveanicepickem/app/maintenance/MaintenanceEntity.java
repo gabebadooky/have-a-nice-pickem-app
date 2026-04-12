@@ -19,7 +19,7 @@ public class MaintenanceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(allocationSize = 1, name = "maintenance_seq", sequenceName = "maintenance_seq")
+    @SequenceGenerator(allocationSize = 1, initialValue = 1, name = "maintenance_seq", schema = "pickem", sequenceName = "maintenance_seq")
     private Long id;
 
     @Column(nullable = false)
