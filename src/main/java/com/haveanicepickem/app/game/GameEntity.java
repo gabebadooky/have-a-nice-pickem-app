@@ -87,7 +87,7 @@ public class GameEntity {
     private ForecastEntity forecast;
 
     @Column(nullable = false)
-    private boolean gameFinished;
+    private boolean finished;
 
     @Column(nullable = false)
     @ColumnDefault("current_timestamp")
@@ -135,7 +135,7 @@ public class GameEntity {
     }
 
     public boolean getGameFinished() {
-        return this.gameFinished;
+        return this.finished;
     }
 
 }
